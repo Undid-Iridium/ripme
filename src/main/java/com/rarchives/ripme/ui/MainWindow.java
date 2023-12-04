@@ -1386,7 +1386,8 @@ public final class MainWindow implements Runnable, RipStatusHandler {
     class RipButtonHandler implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             String url = ripTextfield.getText();
-            if (!queueListModel.contains(url) && !url.equals("")) {
+            boolean url_not_empty = !url.equals("");
+            if (!queueListModel.contains(url) && url_not_empty) {
                 // Check if we're ripping a range of urls
                 if (url.contains("{")) {
                     // Make sure the user hasn't forgotten the closing }
@@ -1408,10 +1409,13 @@ public final class MainWindow implements Runnable, RipStatusHandler {
                     queueListModel.add(queueListModel.size(), ripTextfield.getText());
                     ripTextfield.setText("");
                 }
-            } else {
-                if (!isRipping) {
-                    ripNextAlbum();
-                }
+            } else if (url_not_empty) {
+                displayAndLogError("This URL is already in queue: " + url, Color.RED);
+                statusWithColor("This URL is already in queue: " + url, Color.ORANGE);
+                ripTextfield.setText("");
+            }
+            else if(!isRipping){
+                ripNextAlbum();
             }
         }
     }
