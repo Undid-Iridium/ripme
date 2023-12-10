@@ -51,10 +51,6 @@ public final class MainWindow implements Runnable, RipStatusHandler {
 
     private static JFrame mainFrame;
 
-    public static JTextField getRipTextfield() {
-        return ripTextfield;
-    }
-
     private static JTextField ripTextfield;
     private static JButton ripButton, stopButton;
 
@@ -82,11 +78,6 @@ public final class MainWindow implements Runnable, RipStatusHandler {
     // Queue
     public static JButton optionQueue;
     private static JPanel queuePanel;
-
-    public static DefaultListModel<Object> getQueueListModel() {
-        return queueListModel;
-    }
-
     private static DefaultListModel<Object> queueListModel;
 
     // Configuration
@@ -754,8 +745,8 @@ public final class MainWindow implements Runnable, RipStatusHandler {
     }
 
     private void setupHandlers() {
-        ripButton.addActionListener(new RipButtonHandler(this));
-        ripTextfield.addActionListener(new RipButtonHandler(this));
+        ripButton.addActionListener(new RipButtonHandler());
+        ripTextfield.addActionListener(new RipButtonHandler());
         ripTextfield.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void removeUpdate(DocumentEvent e) {
@@ -1392,17 +1383,10 @@ public final class MainWindow implements Runnable, RipStatusHandler {
         }
     }
 
-    static class RipButtonHandler implements ActionListener {
-
-        private MainWindow mainWindow;
-
-        public RipButtonHandler(MainWindow mainWindow) {
-            this.mainWindow = mainWindow;
-        }
+    class RipButtonHandler implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             String url = ripTextfield.getText();
-            boolean url_not_empty = !url.equals("");
-            if (!queueListModel.contains(url) && url_not_empty) {
+            if (!queueListModel.contains(url) && !url.equals("")) {
                 // Check if we're ripping a range of urls
                 if (url.contains("{")) {
                     // Make sure the user hasn't forgotten the closing }
@@ -1412,11 +1396,11 @@ public final class MainWindow implements Runnable, RipStatusHandler {
                         int rangeEnd = Integer.parseInt(rangeToParse.split("-")[1]);
                         for (int i = rangeStart; i < rangeEnd + 1; i++) {
                             String realURL = url.replaceAll("\\{\\S*\\}", Integer.toString(i));
-                            if (mainWindow.canRip(realURL)) {
+                            if (canRip(realURL)) {
                                 queueListModel.add(queueListModel.size(), realURL);
                                 ripTextfield.setText("");
                             } else {
-                                mainWindow.displayAndLogError("Can't find ripper for " + realURL, Color.RED);
+                                displayAndLogError("Can't find ripper for " + realURL, Color.RED);
                             }
                         }
                     }
@@ -1424,13 +1408,10 @@ public final class MainWindow implements Runnable, RipStatusHandler {
                     queueListModel.add(queueListModel.size(), ripTextfield.getText());
                     ripTextfield.setText("");
                 }
-            } else if (url_not_empty) {
-                mainWindow.displayAndLogError("This URL is already in queue: " + url, Color.RED);
-                mainWindow.statusWithColor("This URL is already in queue: " + url, Color.ORANGE);
-                ripTextfield.setText("");
-            }
-            else if(!mainWindow.isRipping){
-                mainWindow.ripNextAlbum();
+            } else {
+                if (!isRipping) {
+                    ripNextAlbum();
+                }
             }
         }
     }
