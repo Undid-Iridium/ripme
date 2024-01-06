@@ -1,4 +1,4 @@
-package com.rarchives.ripme.ripper;
+package com.rarchives.ripme.ripper.utilities;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;

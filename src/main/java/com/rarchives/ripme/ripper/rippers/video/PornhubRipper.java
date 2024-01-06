@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.nodes.Document;
 
-import com.rarchives.ripme.ripper.VideoRipper;
+import com.rarchives.ripme.ripper.utilities.VideoRipper;
 import com.rarchives.ripme.utils.Http;
 
 public class PornhubRipper extends VideoRipper {

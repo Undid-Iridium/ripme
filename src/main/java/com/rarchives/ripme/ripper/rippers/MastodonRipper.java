@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
 import com.rarchives.ripme.utils.Http;
 
 import org.jsoup.nodes.Document;

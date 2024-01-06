@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 import org.jsoup.nodes.Document;
 
-import com.rarchives.ripme.ripper.VideoRipper;
+import com.rarchives.ripme.ripper.utilities.VideoRipper;
 import com.rarchives.ripme.utils.Http;
 
 public class VkRipper extends VideoRipper {

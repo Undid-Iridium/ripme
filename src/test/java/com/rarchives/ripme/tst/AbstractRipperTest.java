@@ -1,6 +1,6 @@
 package com.rarchives.ripme.tst;
 
-import com.rarchives.ripme.ripper.AbstractRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractRipper;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

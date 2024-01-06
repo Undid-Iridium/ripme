@@ -1,4 +1,4 @@
-package com.rarchives.ripme.ripper;
+package com.rarchives.ripme.ripper.utilities;
 
 import java.awt.Desktop;
 import java.io.BufferedWriter;
@@ -44,7 +44,7 @@ public abstract class AbstractRipper
 
     protected URL url;
     protected File workingDir;
-    DownloadThreadPool threadPool;
+    protected DownloadThreadPool threadPool;
     RipStatusHandler observer = null;
 
     private boolean completed = true;

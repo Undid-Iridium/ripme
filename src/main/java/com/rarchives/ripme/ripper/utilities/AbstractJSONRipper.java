@@ -1,4 +1,4 @@
-package com.rarchives.ripme.ripper;
+package com.rarchives.ripme.ripper.utilities;
 
 import com.rarchives.ripme.ui.RipStatusMessage;
 import com.rarchives.ripme.ui.RipStatusMessage.STATUS;
@@ -25,9 +25,9 @@ import java.util.Map;
  */
 public abstract class AbstractJSONRipper extends AbstractRipper {
     
-    private Map<URL, File> itemsPending = Collections.synchronizedMap(new HashMap<URL, File>());
-    private Map<URL, Path> itemsCompleted = Collections.synchronizedMap(new HashMap<URL, Path>());
-    private Map<URL, String> itemsErrored = Collections.synchronizedMap(new HashMap<URL, String>());
+    protected Map<URL, File> itemsPending = Collections.synchronizedMap(new HashMap<URL, File>());
+    protected Map<URL, Path> itemsCompleted = Collections.synchronizedMap(new HashMap<URL, Path>());
+    protected Map<URL, String> itemsErrored = Collections.synchronizedMap(new HashMap<URL, String>());
 
     protected AbstractJSONRipper(URL url) throws IOException {
         super(url);

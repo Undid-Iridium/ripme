@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.jsoup.nodes.Document;
 
-import com.rarchives.ripme.ripper.AbstractJSONRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractJSONRipper;
 import com.rarchives.ripme.utils.Http;
 import com.rarchives.ripme.utils.Utils;
 

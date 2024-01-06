@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-import com.rarchives.ripme.ripper.AbstractJSONRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractJSONRipper;
 import com.rarchives.ripme.utils.Http;
 
 /**

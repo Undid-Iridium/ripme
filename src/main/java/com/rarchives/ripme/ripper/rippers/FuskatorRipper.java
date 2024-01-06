@@ -15,7 +15,7 @@ import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
 import org.jsoup.nodes.Document;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
 import com.rarchives.ripme.utils.Http;
 
 public class FuskatorRipper extends AbstractHTMLRipper {

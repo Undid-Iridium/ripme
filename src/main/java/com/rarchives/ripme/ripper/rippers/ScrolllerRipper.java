@@ -20,7 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.rarchives.ripme.ripper.AbstractJSONRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractJSONRipper;
 
 public class ScrolllerRipper extends AbstractJSONRipper {
 

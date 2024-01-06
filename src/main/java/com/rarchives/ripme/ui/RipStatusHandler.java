@@ -1,6 +1,6 @@
 package com.rarchives.ripme.ui;
 
-import com.rarchives.ripme.ripper.AbstractRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractRipper;
 
 /**
  * @author Mads

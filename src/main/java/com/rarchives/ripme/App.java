@@ -1,6 +1,6 @@
 package com.rarchives.ripme;
 
-import com.rarchives.ripme.ripper.AbstractRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractRipper;
 import com.rarchives.ripme.ui.History;
 import com.rarchives.ripme.ui.HistoryEntry;
 import com.rarchives.ripme.ui.MainWindow;

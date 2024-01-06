@@ -8,10 +8,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.rarchives.ripme.ripper.AbstractSingleFileRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractSingleFileRipper;
 import org.jsoup.nodes.Document;
-
-import com.rarchives.ripme.utils.Http;
 
 public class RulePornRipper extends AbstractSingleFileRipper {
 

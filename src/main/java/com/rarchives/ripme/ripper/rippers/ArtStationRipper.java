@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Connection.Method;
 import org.jsoup.Connection.Response;
-import com.rarchives.ripme.ripper.AbstractJSONRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractJSONRipper;
 import com.rarchives.ripme.utils.Http;
 
 public class ArtStationRipper extends AbstractJSONRipper {

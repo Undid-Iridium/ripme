@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.rarchives.ripme.ripper.AbstractSingleFileRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractSingleFileRipper;
 import org.jsoup.nodes.Document;
 
 public class FooktubeRipper extends AbstractSingleFileRipper {

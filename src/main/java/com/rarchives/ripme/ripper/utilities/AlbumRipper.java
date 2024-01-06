@@ -1,4 +1,4 @@
-package com.rarchives.ripme.ripper;
+package com.rarchives.ripme.ripper.utilities;
 
 import com.rarchives.ripme.ui.RipStatusMessage;
 import com.rarchives.ripme.ui.RipStatusMessage.STATUS;

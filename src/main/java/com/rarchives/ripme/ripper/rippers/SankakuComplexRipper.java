@@ -16,7 +16,7 @@ import org.jsoup.Connection.Response;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
 import com.rarchives.ripme.utils.Http;
 
 public class SankakuComplexRipper extends AbstractHTMLRipper {

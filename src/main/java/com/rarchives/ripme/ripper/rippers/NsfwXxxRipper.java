@@ -1,6 +1,6 @@
 package com.rarchives.ripme.ripper.rippers;
 
-import com.rarchives.ripme.ripper.AbstractJSONRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractJSONRipper;
 import com.rarchives.ripme.utils.Http;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.json.JSONArray;

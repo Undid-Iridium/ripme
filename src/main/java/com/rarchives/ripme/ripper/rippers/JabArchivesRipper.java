@@ -14,7 +14,7 @@ import java.util.Locale;
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
 import com.rarchives.ripme.utils.Http;
 
 import org.jsoup.nodes.Document;

@@ -15,13 +15,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.HttpStatusException;
 
-import com.rarchives.ripme.ripper.AlbumRipper;
+import com.rarchives.ripme.ripper.utilities.AlbumRipper;
 import com.rarchives.ripme.ui.RipStatusMessage.STATUS;
 import com.rarchives.ripme.utils.Http;
 import com.rarchives.ripme.utils.Utils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 
 public class TumblrRipper extends AlbumRipper {
 

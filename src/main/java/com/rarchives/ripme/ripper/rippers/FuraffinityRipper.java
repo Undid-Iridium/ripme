@@ -23,8 +23,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.safety.Safelist;
 import org.jsoup.select.Elements;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
-import com.rarchives.ripme.ripper.DownloadThreadPool;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
+import com.rarchives.ripme.ripper.utilities.DownloadThreadPool;
 import com.rarchives.ripme.utils.Http;
 
 import static com.rarchives.ripme.utils.RipUtils.getCookiesFromString;

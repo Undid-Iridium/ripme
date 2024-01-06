@@ -1,4 +1,4 @@
-package com.rarchives.ripme.ripper;
+package com.rarchives.ripme.ripper.utilities;
 
 import java.io.*;
 import java.net.*;

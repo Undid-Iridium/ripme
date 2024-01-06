@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 import org.json.JSONObject;
 
-import com.rarchives.ripme.ripper.VideoRipper;
+import com.rarchives.ripme.ripper.utilities.VideoRipper;
 import com.rarchives.ripme.utils.Base64;
 import com.rarchives.ripme.utils.Http;
 

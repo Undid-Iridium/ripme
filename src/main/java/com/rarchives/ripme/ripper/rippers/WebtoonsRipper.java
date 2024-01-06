@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.HashMap;
 import org.jsoup.Connection.Response;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
 import com.rarchives.ripme.utils.Http;
 
 public class WebtoonsRipper extends AbstractHTMLRipper {

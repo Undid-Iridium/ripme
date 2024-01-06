@@ -1,7 +1,9 @@
 package com.rarchives.ripme.ripper.rippers;
 
-import com.rarchives.ripme.ripper.AbstractJSONRipper;
-import com.rarchives.ripme.utils.Http;
+import com.rarchives.ripme.ripper.utilities.AbstractJSONRipper;
+
+import com.rarchives.ripme.ripper.utilities.DownloadFileOkHttpClientThread;
+import com.rarchives.ripme.ui.RipStatusMessage;
 import com.rarchives.ripme.utils.Utils;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -9,29 +11,28 @@ import okhttp3.Response;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.jsoup.Connection;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.GZIPInputStream;
 
 public class DanbooruRipper extends AbstractJSONRipper {
     private static final String DOMAIN = "danbooru.donmai.us",
             HOST = "danbooru";
-    private final OkHttpClient client;
+    private final OkHttpClient httpClient;
 
     private Pattern gidPattern = null;
 
@@ -39,8 +40,9 @@ public class DanbooruRipper extends AbstractJSONRipper {
 
     public DanbooruRipper(URL url) throws IOException {
         super(url);
-        this.client = new OkHttpClient.Builder()
+        this.httpClient = new OkHttpClient.Builder()
                 .readTimeout(60, TimeUnit.SECONDS)
+                .followRedirects(true)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .build();
     }
@@ -87,7 +89,7 @@ public class DanbooruRipper extends AbstractJSONRipper {
         Response response = null;
         currentPageNum++;
         try {
-            response = client.newCall(request).execute();
+            response = httpClient.newCall(request).execute();
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
             String responseData = response.body().string();
@@ -132,6 +134,52 @@ public class DanbooruRipper extends AbstractJSONRipper {
     @Override
     protected void downloadURL(URL url, int index) {
         addURLToDownload(url, getPrefix(index));
+    }
+
+    @Override
+    public boolean addURLToDownload(URL url, Path saveAs, String referrer, Map<String,String> cookies, Boolean getFileExtFromMIME) {
+        // Only download one file if this is a test.
+        if (super.isThisATest() && (itemsCompleted.size() > 0 || itemsErrored.size() > 0)) {
+            stop();
+            itemsPending.clear();
+            return false;
+        }
+        if (!allowDuplicates()
+                && ( itemsPending.containsKey(url)
+                || itemsCompleted.containsKey(url)
+                || itemsErrored.containsKey(url) )) {
+            // Item is already downloaded/downloading, skip it.
+            LOGGER.info("[!] Skipping " + url + " -- already attempted: " + Utils.removeCWD(saveAs));
+            return false;
+        }
+        if (shouldIgnoreURL(url)) {
+            sendUpdate(RipStatusMessage.STATUS.DOWNLOAD_SKIP, "Skipping " + url.toExternalForm() + " - ignored extension");
+            return false;
+        }
+        if (Utils.getConfigBoolean("urls_only.save", false)) {
+            // Output URL to file
+            Path urlFile = Paths.get(this.workingDir + "/urls.txt");
+            String text = url.toExternalForm() + System.lineSeparator();
+            try {
+                Files.write(urlFile, text.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                itemsCompleted.put(url, urlFile);
+            } catch (IOException e) {
+                LOGGER.error("Error while writing to " + urlFile, e);
+            }
+        }
+        else {
+            itemsPending.put(url, saveAs.toFile());
+            DownloadFileOkHttpClientThread dft = new DownloadFileOkHttpClientThread(url,  saveAs.toFile(),  this, getFileExtFromMIME, this.httpClient);
+            if (referrer != null) {
+                dft.setReferrer(referrer);
+            }
+            if (cookies != null) {
+                dft.setCookies(cookies);
+            }
+            threadPool.addThread(dft);
+        }
+
+        return true;
     }
 
     private String getTag(URL url) throws MalformedURLException {

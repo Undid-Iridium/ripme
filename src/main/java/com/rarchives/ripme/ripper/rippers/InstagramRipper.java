@@ -5,7 +5,7 @@ import com.oracle.js.parser.Parser;
 import com.oracle.js.parser.ScriptEnvironment;
 import com.oracle.js.parser.Source;
 import com.oracle.js.parser.ir.*;
-import com.rarchives.ripme.ripper.AbstractJSONRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractJSONRipper;
 import com.rarchives.ripme.utils.Http;
 import com.rarchives.ripme.utils.Utils;
 import org.json.JSONArray;

@@ -1,7 +1,7 @@
 package com.rarchives.ripme.ripper.rippers;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
-import com.rarchives.ripme.utils.Http;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;

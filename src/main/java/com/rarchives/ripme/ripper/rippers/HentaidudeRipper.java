@@ -1,7 +1,7 @@
 package com.rarchives.ripme.ripper.rippers;
 
-import com.rarchives.ripme.ripper.AbstractSingleFileRipper;
-import com.rarchives.ripme.ripper.DownloadThreadPool;
+import com.rarchives.ripme.ripper.utilities.AbstractSingleFileRipper;
+import com.rarchives.ripme.ripper.utilities.DownloadThreadPool;
 import com.rarchives.ripme.utils.Http;
 
 import org.json.JSONObject;

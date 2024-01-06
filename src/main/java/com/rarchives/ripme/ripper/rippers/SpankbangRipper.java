@@ -8,12 +8,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.rarchives.ripme.ripper.AbstractSingleFileRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractSingleFileRipper;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
-import com.rarchives.ripme.ripper.VideoRipper;
-import com.rarchives.ripme.utils.Http;
 
 public class SpankbangRipper extends AbstractSingleFileRipper {
 

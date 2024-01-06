@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rarchives.ripme.ripper.VideoRipper;
+import com.rarchives.ripme.ripper.utilities.VideoRipper;
 import com.rarchives.ripme.ripper.rippers.video.PornhubRipper;
 import com.rarchives.ripme.ripper.rippers.video.YuvutuRipper;
 

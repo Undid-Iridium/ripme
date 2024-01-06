@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 import org.jsoup.nodes.Document;
 
-import com.rarchives.ripme.ripper.AbstractHTMLRipper;
+import com.rarchives.ripme.ripper.utilities.AbstractHTMLRipper;
 import com.rarchives.ripme.utils.Http;
 
 public class HentaiCafeRipper extends AbstractHTMLRipper {
