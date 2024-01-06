@@ -121,38 +121,6 @@ public class DownloadFileOkHttpClientThread implements Runnable {
                         .header("X-Requested-With", "XMLHttpRequest")
                         .header("Connection", "keep-alive")
                         .build();
-//                HttpURLConnection huc;
-//                if (this.url.toString().startsWith("https")) {
-//                    huc = (HttpsURLConnection) urlToDownload.openConnection();
-//                } else {
-//                    huc = (HttpURLConnection) urlToDownload.openConnection();
-//                }
-//                huc.setInstanceFollowRedirects(true);
-                // It is important to set both ConnectTimeout and ReadTimeout. If you don't then
-                // ripme will wait forever
-                // for the server to send data after connecting.
-//                huc.setConnectTimeout(TIMEOUT);
-//                huc.setReadTimeout(TIMEOUT);
-//                huc.setRequestProperty("accept", "*/*");
-//                if (!referrer.equals("")) {
-//                    huc.setRequestProperty("Referer", referrer); // Sic
-//                }
-//                huc.setRequestProperty("User-agent", AbstractRipper.USER_AGENT);
-//                StringBuilder cookie = new StringBuilder();
-//                for (String key : cookies.keySet()) {
-//                    if (!cookie.toString().equals("")) {
-//                        cookie.append("; ");
-//                    }
-//                    cookie.append(key).append("=").append(cookies.get(key));
-//                }
-//                huc.setRequestProperty("Cookie", cookie.toString());
-//                if (observer.tryResumeDownload()) {
-//                    if (fileSize != 0) {
-//                        huc.setRequestProperty("Range", "bytes=" + fileSize + "-");
-//                    }
-//                }
-//                logger.debug(Utils.getLocalizedString("request.properties") + ": " + huc.getRequestProperties());
-//                huc.connect();
 
                 Response response;
                 int statusCode = 0;
